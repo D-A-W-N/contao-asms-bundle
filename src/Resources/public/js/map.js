@@ -105,8 +105,8 @@ $(function () {
       .on("click", function () {
         click(job, this);
       })
-      .on("keypress", function (e) {
-        if (e.originalEvent.key === "Enter") {
+      .on("keydown", function (e) {
+        if (e.originalEvent.code === "Enter") {
           click(job, this);
 
           // set focus to close button
@@ -146,5 +146,11 @@ $(function () {
 
   jobMapDetailOverlayClose.onclick = function (e) {
     $(jobDetailDiv).hide();
+  };
+
+  jobMapDetailOverlayClose.onkeydown = function (e) {
+    if (e.key === "Enter") {
+      $(jobDetailDiv).hide();
+    }
   };
 });
